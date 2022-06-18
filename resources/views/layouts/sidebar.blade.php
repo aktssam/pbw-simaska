@@ -57,8 +57,8 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ request()->is('dashboard') ? 'active' : '' }}">
+            <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -71,27 +71,30 @@
         </li>
 
         <!-- Tables -->
-        <li class="menu-item">
-            <a href="tables-basic.html" class="menu-link">
+        <li class="menu-item {{ request()->is('kendaraan*') ? 'active' : '' }}">
+            <a href="{{ route('kendaraan.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-car"></i>
                 <div data-i18n="Tables">Data Kendaraan</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="tables-basic.html" class="menu-link">
+        <li class="menu-item {{ request()->is('departemen*') ? 'active' : '' }}">
+            <a href="{{ route('departemen.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-buildings"></i>
                 <div data-i18n="Tables">Data Departemen</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="tables-basic.html" class="menu-link">
+        <li class="menu-item {{ request()->is('kategori*') ? 'active' : '' }}">
+            <a href="{{ route('kategori.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-category"></i>
                 <div data-i18n="Tables">Kategori Kendaraan</div>
             </a>
         </li>
 
         <!-- Misc -->
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Misc</span></li>
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Opsi</span>
+        </li>
+
         <li class="menu-item">
             <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank"
                 class="menu-link">
@@ -100,8 +103,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank"
-                class="menu-link">
+            <a href="https://github.com/aktssam/" target="_blank" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-file"></i>
                 <div data-i18n="Documentation">Documentation</div>
             </a>
