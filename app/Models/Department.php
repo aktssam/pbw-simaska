@@ -5,16 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Departemen extends Model
+class Department extends Model
 {
     use HasFactory;
 
-    protected $table = 'departemen';
-    protected $guarded = 'id';
+    protected $table = 'department';
+    protected $guarded = ['id'];
 
     public function kendaraan()
     {
         return $this->hasMany(Kendaraan::class);
     }
 
+    public function getRouteKeyName()
+    {
+        return 'kode_department';
+    }
 }

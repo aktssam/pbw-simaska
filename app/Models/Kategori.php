@@ -16,4 +16,9 @@ class Kategori extends Model
     {
         return $this->hasMany(Kendaraan::class);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'kode_kategori';
+    }
 }
