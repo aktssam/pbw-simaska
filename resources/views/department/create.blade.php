@@ -4,37 +4,38 @@
   <div class="row">
     <div class="col-xxl">
       <div class="card mb-4">
-        <h5 class="mb-0 card-header">Tambah Kategori</h5>
+        <h5 class="mb-0 card-header">Tambah department</h5>
         <div class="card-body">
 
-          <form action="{{ route('kategori.store') }}" method="POST">
+          <form action="{{ route('department.store') }}" method="POST">
             @method('POST')
             @csrf
             <div class="row mb-3">
-              <label class="col-sm-2 col-form-label" for="kode_kategori">
-                Kode Kategori</label>
+              <label class="col-sm-2 col-form-label" for="kode_department">
+                Kode department</label>
               <div class="col-sm-10">
                 <div class="input-group input-group-merge">
-                  <input type="text" class="form-control @error('kode_kategori') is-invalid @enderror"
-                    id="kode_kategori" name="kode_kategori" placeholder="KR02" required
-                    value="@error('kode_kategori') {{ old('kode_kategori') }} @enderror" />
+                  <input type="text" class="form-control @error('kode_department') is-invalid @enderror"
+                    id="kode_department" name="kode_department" placeholder="DPT001" required
+                    value="@error('kode_department') {{ old('kode_department') }} @enderror" />
                 </div>
-                @error('kode_kategori')
+                @error('kode_department')
                   <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
               </div>
             </div>
 
             <div class="row mb-3">
-              <label class="col-sm-2 col-form-label" for="nama_kategori">Kategori
-                Kendaraan</label>
+              <label class="col-sm-2 col-form-label" for="nama_department">
+                Nama department
+              </label>
               <div class="col-sm-10">
                 <div class="input-group input-group-merge">
-                  <input type="text" class="form-control @error('nama_kategori') is-invalid @enderror"
-                    id="nama_kategori" name="nama_kategori" placeholder="Sepeda Motor" required
-                    value="@error('nama_kategori') {{ old('nama_kategori') }} @enderror" />
+                  <input type="text" class="form-control @error('nama_department') is-invalid @enderror"
+                    id="nama_department" name="nama_department" placeholder="Keuangan" required
+                    value="@error('nama_department') {{ old('nama_department') }} @enderror" />
                 </div>
-                @error('nama_kategori')
+                @error('nama_department')
                   <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
               </div>
