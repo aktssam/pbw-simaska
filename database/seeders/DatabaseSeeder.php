@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,10 +18,13 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Administrator',
+            'username' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => 'admin',
+            // 'password' => bcrypt('admin'),
+        ]);
 
         /* ===== Seeder Kategori ===== */
         \App\Models\Kategori::create([
@@ -39,24 +44,42 @@ class DatabaseSeeder extends Seeder
 
 
         /* ===== Seeder Departemen ===== */
-        \App\Models\Departemen::create([
-            'kode_departemen' => 'DPT001',
-            'nama_departemen' => 'Keuangan',
+        \App\Models\Department::create([
+            'kode_department' => 'DPT001',
+            'nama_department' => 'Keuangan',
         ]);
 
-        \App\Models\Departemen::create([
-            'kode_departemen' => 'DPT002',
-            'nama_departemen' => 'Pemasaran',
+        \App\Models\Department::create([
+            'kode_department' => 'DPT002',
+            'nama_department' => 'Pemasaran',
         ]);
 
-        \App\Models\Departemen::create([
-            'kode_departemen' => 'DPT003',
-            'nama_departemen' => 'Produksi',
+        \App\Models\Department::create([
+            'kode_department' => 'DPT003',
+            'nama_department' => 'Produksi',
         ]);
 
-        \App\Models\Departemen::create([
-            'kode_departemen' => 'DPT004',
-            'nama_departemen' => 'Gudang',
+        \App\Models\Department::create([
+            'kode_department' => 'DPT004',
+            'nama_department' => 'Gudang',
+        ]);
+
+
+        /* ===== Seeder Kendaraan ===== */
+        \App\Models\Kendaraan::create([
+            'nopol' => 'W 10 S',
+            'merk' => 'Toyota',
+            'tipe' => 'Avanza',
+            'kategori_id' => 3,
+            'department_id' => 3,
+        ]);
+
+        \App\Models\Kendaraan::create([
+            'nopol' => 'L 10 S',
+            'merk' => 'Honda',
+            'tipe' => 'Beat',
+            'kategori_id' => 1,
+            'department_id' => 2,
         ]);
     }
 }
