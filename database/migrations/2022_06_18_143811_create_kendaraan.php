@@ -22,7 +22,7 @@ return new class extends Migration
 
             // Foreign key
             $table->foreignId('kategori_id')->constrained('kategori');
-            $table->foreignId('departemen_id')->constrained('departemen');
+            $table->foreignId('department_id')->constrained('department');
 
             $table->timestamps();
         });
