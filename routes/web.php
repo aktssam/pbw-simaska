@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', [AuthController::class, 'check']);
 
-Route::get('/', function () {
-    return view('dashboard');
+Route::get('/login', [AuthController::class, 'index'])->name('auth.index')->middleware('guest');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login')->middleware('guest');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/dashboard', 'App\Http\Controllers\Controller@dahsboard')->name('dashboard');
+
+    Route::resources([
+        'kategori' => App\Http\Controllers\KategoriController::class,
+        'department' => App\Http\Controllers\DepartmentController::class,
+        'kendaraan' => App\Http\Controllers\KendaraanController::class,
+    ]);
+
 });
