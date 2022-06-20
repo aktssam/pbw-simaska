@@ -67,17 +67,38 @@ class DatabaseSeeder extends Seeder
 
         /* ===== Seeder Kendaraan ===== */
         \App\Models\Kendaraan::create([
-            'nopol' => 'W 10 S',
+            'nopol' => 'W 1093 S',
             'merk' => 'Toyota',
             'tipe' => 'Avanza',
+            'tahun_keluaran' => '2020',
+            'bpkb' => true,
+            'no_bpkb' => 'ABCD1234578',
+            'stnk' => true,
+            'no_stnk' => 'ABCD1234578',
             'kategori_id' => 3,
             'department_id' => 3,
         ]);
 
         \App\Models\Kendaraan::create([
-            'nopol' => 'L 10 S',
+            'nopol' => 'S 4444 SS',
+            'merk' => 'Yamaha',
+            'tipe' => 'Mio',
+            'tahun_keluaran' => '2005',
+            'stnk' => true,
+            'no_stnk' => 'ABCD1234578',
+            'kategori_id' => 1,
+            'department_id' => 4,
+        ]);
+
+        \App\Models\Kendaraan::create([
+            'nopol' => 'L 1123 S',
             'merk' => 'Honda',
             'tipe' => 'Beat',
+            'tahun_keluaran' => '2020',
+            'bpkb' => true,
+            'no_bpkb' => 'ABCD1234578',
+            'stnk' => true,
+            'no_stnk' => 'ABCD1234578',
             'kategori_id' => 1,
             'department_id' => 2,
         ]);

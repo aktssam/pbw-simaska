@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -18,7 +19,11 @@ return new class extends Migration
             $table->string('nopol');
             $table->string('merk');
             $table->string('tipe');
-            $table->string('gambar')->nullable();
+            $table->string('tahun_keluaran');
+            $table->boolean('bpkb')->default(false);
+            $table->string('no_bpkb')->nullable();
+            $table->boolean('stnk')->default(false);
+            $table->string('no_stnk')->nullable();
 
             // Foreign key
             $table->foreignId('kategori_id')->constrained('kategori');
@@ -26,6 +31,8 @@ return new class extends Migration
 
             $table->timestamps();
         });
+
+        DB::statement("ALTER TABLE kendaraan ADD blob_gambar MEDIUMBLOB null DEFAULT(null)");
     }
 
     /**
