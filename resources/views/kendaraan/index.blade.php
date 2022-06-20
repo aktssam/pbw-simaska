@@ -31,13 +31,14 @@
     </div>
 
     <div class="table-responsive text-nowrap">
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>#</th>
             <th>No Polisi</th>
             <th>Merk</th>
             <th>Tipe</th>
+            <th>Tahun</th>
             <th>Jenis Kendaraan</th>
             <th>Departemen</th>
             <th><i class="bx bx-info-circle"></i></th>
@@ -47,9 +48,12 @@
           @foreach ($kendaraan as $kdrn)
             <tr>
               <td style="width: 1px;">{{ $loop->index + 1 }}</td>
-              <td style="width: 1px;"><strong>{{ $kdrn->nopol }}</strong></td>
+              <td style="width: 1px;"><a
+                  href="{{ route('kendaraan.show', $kdrn) }}"><strong>{{ $kdrn->nopol }}</strong></a></td>
               <td style="width: 1px;">{{ $kdrn->merk }}</td>
               <td>{{ $kdrn->tipe }}</td>
+              <td>{{ $kdrn->tahun_keluaran }}</td>
+
               <td>{{ $kdrn->kategori->nama_kategori }}</td>
               <td>{{ $kdrn->department->nama_department }}</td>
               <td style="width: 100px;">
