@@ -22,12 +22,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard', 'App\Http\Controllers\Controller@dahsboard')->name('dashboard');
+    Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard');
 
     Route::resources([
         'kategori' => App\Http\Controllers\KategoriController::class,
         'department' => App\Http\Controllers\DepartmentController::class,
         'kendaraan' => App\Http\Controllers\KendaraanController::class,
     ]);
-
 });
