@@ -8,9 +8,8 @@
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-  <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+  <title>@yield('title') | Simaska - PBW UISI 2022</title>
 
-  <meta name="description" content="" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
@@ -74,16 +73,16 @@
           {{-- @include('layouts.footer') --}}
           <!-- / Footer -->
 
+          @include('layouts.footer')
           <div class="content-backdrop fade"></div>
         </div>
         <!-- Content wrapper -->
       </div>
       <!-- / Layout page -->
     </div>
-
     <!-- Overlay -->
     <div class="layout-overlay layout-menu-toggle"></div>
-  </div>
+</div>
   <!-- / Layout wrapper -->
 
 

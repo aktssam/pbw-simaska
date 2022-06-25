@@ -1,5 +1,7 @@
 @extends('layouts.core')
 
+@section('title', 'Edit Kendaraan')
+
 @section('content')
   <form action="{{ route('kendaraan.update', $kendaraan) }}" method="POST" enctype="multipart/form-data">
     @method('PUT')

@@ -1,5 +1,7 @@
 @extends('layouts.core')
 
+@section('title', 'Tambah Departemen')
+
 @section('content')
   <div class="row">
     <div class="col-xxl">

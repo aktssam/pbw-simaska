@@ -1,5 +1,7 @@
 @extends('layouts.core')
 
+@section('title', 'Edit Kategori')
+
 @section('content')
   <div class="row">
     <div class="col-xxl">

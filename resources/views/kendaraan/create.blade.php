@@ -1,5 +1,7 @@
 @extends('layouts.core')
 
+@section('title', 'Tambah Kendaraan')
+
 @section('content')
   <form action="{{ route('kendaraan.store') }}" method="POST" enctype="multipart/form-data">
     @method('post')
