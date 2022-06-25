@@ -1,8 +1,8 @@
 @extends('layouts.core')
 
 @section('content')
-  <form action="{{ route('kendaraan.store') }}" method="POST" enctype="multipart/form-data">
-    @method('post')
+  <form action="{{ route('kendaraan.update', $kendaraan) }}" method="POST" enctype="multipart/form-data">
+    @method('PUT')
     @csrf
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -14,38 +14,40 @@
             {{-- NOPOL --}}
             <div class="mb-3">
               <label class="form-label" for="nopol">No Polisi</label>
-              <input type="text" class="form-control" id="nopol" name="nopol" placeholder="A 1234 BC" required
-                autofocus />
+              <input type="text" class="form-control" id="nopol" name="nopol" placeholder="A 1234 BC"
+                value="{{ $kendaraan->nopol }}" required autofocus />
             </div>
 
             {{-- MEREK --}}
             <div class="mb-3">
               <label class="form-label" for="merk">Merek</label>
               <input type="text" class="form-control" id="merk" name="merk" placeholder="Merek kendaraan"
-                required />
+                value="{{ $kendaraan->merk }}" required />
               <div class="form-text">contoh: Honda, Toyota, Yamaha, Daihatsu, dll</div>
             </div>
 
             <div class="mb-3">
               <label class="form-label" for="tipe">Tipe</label>
               <input type="text" class="form-control" id="tipe" name="tipe" placeholder="Tipe kendaraan"
-                required />
+                value="{{ $kendaraan->tipe }}" required />
             </div>
 
             <div class="mb-3">
               <label class="form-label" for="tahun_keluaran">Tahun Keluaran</label>
               <input type="number" class="form-control" id="tahun_keluaran" name="tahun_keluaran"
-                placeholder="Tahun Keluaran" value="{{ now()->year }}" required />
+                placeholder="Tahun Keluaran" value="{{ $kendaraan->tahun_keluaran }}" required />
             </div>
 
             <div class="mb-3">
               <label class="form-label" for="no_stnk">Nomor STNK</label>
-              <input type="text" class="form-control" id="no_stnk" name="no_stnk" placeholder="ABCD1234567" />
+              <input type="text" class="form-control" id="no_stnk" name="no_stnk" placeholder="ABCD1234567"
+                value="{{ $kendaraan->no_stnk }}" />
               <div class="form-text">(optional) jika ada</div>
             </div>
             <div class="mb-3">
               <label class="form-label" for="no_bpkb">Nomor BPKB</label>
-              <input type="text" class="form-control" id="no_bpkb" name="no_bpkb" placeholder="ABCD1234567" />
+              <input type="text" class="form-control" id="no_bpkb" name="no_bpkb" placeholder="ABCD1234567"
+                value="{{ $kendaraan->no_bpkb }}" />
               <div class="form-text">(optional) jika ada</div>
             </div>
 
@@ -54,7 +56,8 @@
               <select class="form-select" id="kategori_id" name="kategori_id" required>
                 <option>Pilih kategori...</option>
                 @foreach ($kategori as $ktg)
-                  <option value="{{ $ktg->id }}">{{ $ktg->nama_kategori }}</option>
+                  <option value="{{ $ktg->id }}" {{ $kendaraan->kategori_id == $ktg->id ? 'selected' : '' }}>
+                    {{ $ktg->nama_kategori }}</option>
                 @endforeach
               </select>
             </div>
@@ -64,18 +67,24 @@
               <select class="form-select" id="department_id" name="department_id" required>
                 <option>Pilih department...</option>
                 @foreach ($department as $dpt)
-                  <option value="{{ $dpt->id }}">{{ $dpt->nama_department }}</option>
+                  <option value="{{ $dpt->id }}" {{ $kendaraan->department_id == $dpt->id ? 'selected' : '' }}>
+                    {{ $dpt->nama_department }}</option>
                 @endforeach
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">Tambah</button>
+            <button type="submit" class="btn btn-primary">Ubah</button>
           </div>
         </div>
       </div>
       <div class="col-md-4">
         <div class="card">
           {{-- <img class="card-img-top img-preview" src="../assets/img/elements/2.jpg"> --}}
-          <img class="card-img-top img-preview" src="{{ asset('assets/img/preview.png') }}">
+
+          @if ($kendaraan->blob_gambar)
+            <img class="card-img-top img-preview rounded" src="{{ url('storage/image_preview.png') }}">
+          @else
+            <img class="card-img-top img-preview rounded" src="{{ asset('assets/img/no_image.png') }}">
+          @endif
           <div class="card-body">
             <div class="mb-3">
               <label for="blob_gambar" class="form-label">(optional) upload foto kendaraan</label>

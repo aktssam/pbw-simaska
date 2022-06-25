@@ -44,7 +44,14 @@ class DepartmentController extends Controller
 
     public function update(Request $request, Department $department)
     {
-        //
+
+        $validated = $request->validate([
+            'kode_department' => 'bail|required|min:4|max:10',
+            'nama_department' => 'required|min:4|max:255',
+        ]);
+
+        Department::where('id', $department->id)->update($validated);
+        return redirect('department')->with('success', 'Berhasil mengubah data');
     }
 
     public function destroy(Department $department)

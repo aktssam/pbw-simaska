@@ -84,14 +84,19 @@
             Opsi
           </li>
           <li class="list-group-item dropdown-item">
-            <a href="#"><span><i class="bx bx-edit"></i></span>&nbsp;&nbsp; Edit data</a>
+            <a href="{{ route('kendaraan.edit', $kendaraan) }}"><span><i class="bx bx-edit"></i></span>&nbsp;&nbsp;
+              Edit data</a>
           </li>
           <li class="list-group-item dropdown-item">
-            <a href="#" class="text-danger"><span><i class="bx bx-trash"></i></span>&nbsp;&nbsp; Hapus data
-            </a>
+            <form action="{{ route('kendaraan.destroy', $kendaraan) }}" method="POST">
+              @method('DELETE')
+              @csrf
+              <Button class="btn btn-link text-danger m-0 p-0" onclick="return confirm('Apakah anda yakin?')">
+                <span><i class="bx bx-trash"></i></span>&nbsp;&nbsp; Hapus data
+              </Button>
+            </form>
           </li>
         </ul>
-
       </div>
     </div>
   </div>

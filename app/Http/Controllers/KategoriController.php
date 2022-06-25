@@ -42,7 +42,13 @@ class KategoriController extends Controller
 
     public function update(Request $request, Kategori $kategori)
     {
-        //
+        $validated = $request->validate([
+            'kode_kategori' => 'bail|required|min:4|max:10',
+            'nama_kategori' => 'required|min:4|max:255',
+        ]);
+
+        Kategori::where('id', $kategori->id)->update($validated);
+        return redirect('kategori')->with('success', 'Berhasil mengubah data');
     }
 
     public function destroy(Kategori $kategori)
