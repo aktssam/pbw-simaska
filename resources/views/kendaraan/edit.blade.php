@@ -10,7 +10,7 @@
       <div class="col-md-8">
         <div class="card mb-4">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Tambah Data Kendaraan</h5>
+            <h5 class="mb-0">Edit Data Kendaraan</h5>
           </div>
           <div class="card-body">
             {{-- NOPOL --}}

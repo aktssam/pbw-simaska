@@ -14,7 +14,7 @@
             @csrf
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label" for="kode_department">
-                Kode Kategori</label>
+                Kode Department</label>
               <div class="col-sm-10">
                 <div class="input-group input-group-merge">
                   <input type="text" class="form-control @error('kode_department') is-invalid @enderror"
